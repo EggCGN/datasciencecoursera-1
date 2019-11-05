@@ -1,5 +1,3 @@
-source("airpollutionutils.r")
-
 pollutantmean <- function(directory, pollutant, ids=1:332) {
   values <- vector()
   for (id in ids) {
