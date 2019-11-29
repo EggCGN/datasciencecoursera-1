@@ -15,6 +15,55 @@ When you save the notebook, an HTML file containing the code and output will be 
 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
 
+# Week 1 course notes
+
+Slides are available [here](https://github.com/rdpeng/courses/tree/master/03_GettingData).
+
+## data.table
+
+```{r}
+library(data.table)
+dt = data.table(x=rnorm(9), y=rep(c("a","b","c"), each=3), z=rnorm(9))
+df = data.frame(x=rnorm(9), y=rep(c("a","b","c"), each=3), z=rnorm(9))
+head(dt)
+```
+Subsetting works like data.frame, but when you index with a single index it will subset by rows while it is by columns with data.frame.
+
+```{r}
+dt[c(2,3)]
+df[c(2,3)]
+```
+
+You should use a comma to get the same result as data.frame.
+
+```{r}
+dt[,c(2,3)]
+df[,c(2,3)]
+```
+
+Calculate values for variables with expressions:
+
+```{r}
+dt[,list(mean(x), sum(z))]
+```
+
+Adding new columns:
+
+```{r}
+dt[,w:=z^2]
+head(dt)
+```
+
+*Warning*: pay attention to copy assignment. Doing `dt2 <- dt` will not create a copy of dt. Modifying one of these two variables will modify the other one.
+
+Special variables: .N An integer, length 1, containing the number of elements of a factor level
+
+```{r}
+set.seed(123);
+DT <- data.table(x=sample(letters[1:3], 1E5, TRUE))
+DT[, .N, by=x]
+```
+
 # Week 1 quiz
 
 ### Question 1
