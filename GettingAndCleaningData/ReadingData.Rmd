@@ -173,3 +173,53 @@ system.time(mean(DT$pwgtp15, by=DT$SEX))
 ```
 
 The answer is *DT[,mean(pwgtp15), by=SEX]* as said in the course, but during the above test, we can see that this is the longest.
+
+# Week 2 course notes
+
+## Reading from HDF5
+
+```{r}
+library(rhdf5)
+filename = "example.h5"
+created = h5createFile(filename)
+created
+```
+
+```{r}
+created = h5createGroup(filename, "foo")
+A = matrix(1:10, nr=5, nc=2)
+h5write(A, filename, "foo/A")
+readA = h5read(filename, "foo/A")
+print(readA)
+```
+
+## Reading from the Web
+
+```{r}
+con = url("https://www.data.gouv.fr/fr/datasets/demandes-de-valeurs-foncieres/")
+htmlCode = readLines(con)
+close(con)
+head(htmlCode)
+```
+The XML package is needed to parse the output.
+
+Another way is to use the library htr and GET:
+
+```{r}
+url <- "http://scholar.google.com/citations?user=HI-I6C0AAAAJ&hl=en"
+library(httr)
+parsedHtml = httr::parse_url(url)
+xpathSApply(parsedHtml, "//title", xmlValue)
+```
+
+## API
+
+```{r}
+myapp = oauth_app("twitter",
+                  key = "mykey", secret = "mysecret")
+sig = sign_oauth1.0(myapp, token = "mytoken", token_secret = "token-secret")
+homeTL = GET("http://yolo", sig)
+# Use jsonlite::fromJSON to read json 
+```
+
+
