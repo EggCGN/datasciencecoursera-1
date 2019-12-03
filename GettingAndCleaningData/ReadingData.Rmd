@@ -18,6 +18,7 @@ The preview shows you a rendered HTML copy of the contents of the editor. Conseq
 # Week 1 course notes
 
 Slides are available [here](https://github.com/rdpeng/courses/tree/master/03_GettingData).
+Rprogramming uselful book is available here : https://bookdown.org/rdpeng/rprogdatascience/
 
 ## data.table
 
@@ -254,5 +255,79 @@ json_content <- jsonlite::fromJSON(jsonlite::toJSON(raw_content))
 df <- as.data.frame(json_content)
 date_created <- subset(df, name == "datasharing")["created_at"]
 unlist(date_created)
+```
+
+### Question 2
+
+The sqldf package allows for execution of SQL commands on R data frames. We will use the sqldf package to practice the queries we might send with the dbSendQuery command in RMySQL.
+
+Download the American Community Survey data and load it into an R object called _acs_
+https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv
+
+Which of the following commands will select only the data for the probability weights pwgtp1 with ages less than 50?
+
+```{r}
+acs <- read.csv("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv")
+head(acs, 1)
+```
+
+```{r}
+library(sqldf)
+sqldf("select pwgtp1 from acs where AGEP < 50")
+```
+
+### Question 3
+
+Using the same data frame you created in the previous problem, what is the equivalent function to unique(acs$AGEP)
+
+```{r}
+unique(acs$AGEP)
+sqldf("select distinct AGEP from acs")
+```
+
+### Question 4
+
+How many characters are in the 10th, 20th, 30th and 100th lines of HTML from this page:
+http://biostat.jhsph.edu/~jleek/contact.html
+
+```{r}
+con = url("http://biostat.jhsph.edu/~jleek/contact.html")
+htmlCode = readLines(con)
+close(con)
+for(i in c(10,20,30,100)){
+  print(nchar(htmlCode[i]))
+}
+```
+
+### Question 5
+
+Read this data set into R and report the sum of the numbers in the fourth of the nine columns.
+https://d396qusza40orc.cloudfront.net/getdata%2Fwksst8110.for
+Original source of the data: http://www.cpc.ncep.noaa.gov/data/indices/wksst8110.for
+
+```{r}
+con = url("https://d396qusza40orc.cloudfront.net/getdata%2Fwksst8110.for")
+htmlCode = readLines(con)
+close(con)
+head(htmlCode)
+```
+```{r}
+nchar(htmlCode[5])
+# total: 62
+init_col = 16
+blanc_size = 4
+col_size = 3
+substr(htmlCode[5],1,15)
+substr(htmlCode[5],16,19)
+substr(htmlCode[5],20,23)
+substr(htmlCode[5],24,28) # blanc
+substr(htmlCode[5],29,32)
+substr(htmlCode[5],33,36)
+
+x = c()
+for(i in 5:length(htmlCode)){
+  x = append(x, as.numeric(substr(htmlCode[i],29,32)))
+}
+sum(x)
 ```
 
