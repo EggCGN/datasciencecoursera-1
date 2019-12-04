@@ -331,3 +331,14 @@ for(i in 5:length(htmlCode)){
 sum(x)
 ```
 
+# Week 3 course notes
+
+See this [link](https://github.com/rdpeng/courses/blob/master/03_GettingData/03_01_subsettingAndSorting/index.md) to get example about subsetting dataframe.
+
+#### Remember:
+* `%in%` allows you to filter by value a data.frame or data.table
+* `xtabs(Var_to_print ~ by_var1_col + by_var2_col)` allows you to get the count for the variable to print by different other variable. Use a flat table ot print if there are more han 2 variables: `ftable(xtabs(...))`
+
+# Week 3 quiz
+
+### Question 1
