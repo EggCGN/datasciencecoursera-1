@@ -311,6 +311,7 @@ htmlCode = readLines(con)
 close(con)
 head(htmlCode)
 ```
+
 ```{r}
 nchar(htmlCode[5])
 # total: 62
@@ -331,6 +332,7 @@ for(i in 5:length(htmlCode)){
 sum(x)
 ```
 
+
 # Week 3 course notes
 
 See this [link](https://github.com/rdpeng/courses/blob/master/03_GettingData/03_01_subsettingAndSorting/index.md) to get example about subsetting dataframe.
@@ -339,6 +341,27 @@ See this [link](https://github.com/rdpeng/courses/blob/master/03_GettingData/03_
 * `%in%` allows you to filter by value a data.frame or data.table
 * `xtabs(Var_to_print ~ by_var1_col + by_var2_col)` allows you to get the count for the variable to print by different other variable. Use a flat table ot print if there are more han 2 variables: `ftable(xtabs(...))`
 
-# Week 3 quiz
+# Week 3 Quiz
 
 ### Question 1
+
+The American Community Survey distributes downloadable data about United States communities. Download the 2006 microdata survey about housing for the state of Idaho using download.file() from here:
+
+https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv
+
+and load the data into R. The code book, describing the variable names is here:
+
+https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FPUMSDataDict06.pdf
+
+Create a logical vector that identifies the households on greater than 10 acres who sold more than $10,000 worth of agriculture products. Assign that logical vector to the variable agricultureLogical. Apply the which() function like this to identify the rows of the data frame where the logical vector is TRUE.
+
+which(agricultureLogical)
+
+What are the first 3 values that result?
+
+```{r}
+df = read.csv("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv")
+head(df)
+
+```
+
