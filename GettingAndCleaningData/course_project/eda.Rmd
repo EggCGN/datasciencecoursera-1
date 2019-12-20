@@ -10,6 +10,8 @@ X_train = read.table("UCI\ HAR\ Dataset/train/X_train.txt", col.names = unlist(c
 y_train = read.table("UCI\ HAR\ Dataset/train/y_train.txt", col.names = c("Activity"))
 X_test = read.table("UCI\ HAR\ Dataset/test/X_test.txt", col.names = unlist(columns_names[2]))
 y_test = read.table("UCI\ HAR\ Dataset/test/y_test.txt", col.names = c("Activity"))
+subjects_train = read.table("UCI\ HAR\ Dataset/train/subject_train.txt", col.names = "Subject")
+subjects_test = read.table("UCI\ HAR\ Dataset/test/subject_test.txt", col.names = "Subject")
 ```
 
 ```{r}
@@ -23,9 +25,14 @@ table(is.na(X_test))
 table(is.na(y_test))
 ```
 We can see that there is not a single na value in this data set.
-Let's merge the X and y tables (train and test together).
+```{r}
+# Add Subject col
+X_train = dplyr::mutate(X_train, Subject = subjects_train$Subject)
+X_test = dplyr::mutate(X_test, Subject = subjects_test$Subject)
+```
 
 ```{r}
+# Merge the X and y tables (train and test)
 library(dplyr)
 merged_X = dplyr::bind_rows(X_train, X_test)
 table(is.na(merged_X))
@@ -33,10 +40,10 @@ merged_y = dplyr::bind_rows(y_train, y_test)
 table(is.na(merged_y))
 merged = dplyr::mutate(merged_X, Activity = merged_y$Activity)
 ```
-Let's keep only mean and std cols
 
 ```{r}
-dt = merged[,c(unlist(grep("mean", colnames(merged))), unlist(grep("std", colnames(merged))), length(merged))]
+# Only keep mean and std cols & Activity & Subject
+dt = merged[,c(unlist(grep("mean", colnames(merged))), unlist(grep("std", colnames(merged))), length(merged)-1, length(merged))]
 # Change Activity numbers to factor
 activity_labels = read.table("UCI\ HAR\ Dataset/activity_labels.txt")
 dt$Activity = factor(dt$Activity)
@@ -55,4 +62,8 @@ colnames(dt) = gsub("\\.", "", colnames(dt))
 colnames(dt)
 ```
 
+```{r}
+average = setDT(dt)[, lapply(.SD, mean), by=c("Subject", "Activity")]
+head(average)
+```
 
