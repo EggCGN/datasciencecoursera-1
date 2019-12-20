@@ -29,5 +29,30 @@ Let's merge the X and y tables (train and test together).
 library(dplyr)
 merged_X = dplyr::bind_rows(X_train, X_test)
 table(is.na(merged_X))
+merged_y = dplyr::bind_rows(y_train, y_test)
+table(is.na(merged_y))
+merged = dplyr::mutate(merged_X, Activity = merged_y$Activity)
 ```
+Let's keep only mean and std cols
+
+```{r}
+dt = merged[,c(unlist(grep("mean", colnames(merged))), unlist(grep("std", colnames(merged))), length(merged))]
+# Change Activity numbers to factor
+activity_labels = read.table("UCI\ HAR\ Dataset/activity_labels.txt")
+dt$Activity = factor(dt$Activity)
+levels(dt$Activity) = unlist(activity_labels[2])
+```
+
+```{r}
+# Change col names
+colnames(dt) = sub("fBody", "FrequencyBody", colnames(dt))
+colnames(dt) = sub("tBody", "TimeBody", colnames(dt))
+colnames(dt) = sub("Acc", "Acceleration", colnames(dt))
+colnames(dt) = sub("Mag", "Magnitude", colnames(dt))
+colnames(dt) = sub("mean", "Mean", colnames(dt))
+colnames(dt) = sub("std", "Std", colnames(dt))
+colnames(dt) = gsub("\\.", "", colnames(dt))
+colnames(dt)
+```
+
 
