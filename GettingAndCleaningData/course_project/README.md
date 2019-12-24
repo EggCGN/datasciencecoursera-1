@@ -31,9 +31,52 @@ The following files are available for the train and test data. Their description
 
 # Output
 
-Returns a file called **mean_by_subject_by_activity.txt** that contains the mean of each physic metrics described in _feature\_info.txt_ by subject and activity.
+Returns a file called **mean\_by_subject\_by_activity.txt** that contains the mean of each physic metrics described in _feature\_info.txt_ by subject and activity.
 
 The output contains the following metrics:
 
-"Subject" "Activity" "TimeBodyAccelerationMeanX" "TimeBodyAccelerationMeanY" "TimeBodyAccelerationMeanZ" "tGravityAccelerationMeanX" "tGravityAccelerationMeanY" "tGravityAccelerationMeanZ" "TimeBodyAccelerationJerkMeanX" "TimeBodyAccelerationJerkMeanY" "TimeBodyAccelerationJerkMeanZ" "TimeBodyGyroMeanX" "TimeBodyGyroMeanY" "TimeBodyGyroMeanZ" "TimeBodyGyroJerkMeanX" "TimeBodyGyroJerkMeanY" "TimeBodyGyroJerkMeanZ" "TimeBodyAccelerationMagnitudeMean" "tGravityAccelerationMagnitudeMean" "TimeBodyAccelerationJerkMagnitudeMean" "TimeBodyGyroMagnitudeMean" "TimeBodyGyroJerkMagnitudeMean" "FrequencyBodyAccelerationMeanX" "FrequencyBodyAccelerationMeanY" "FrequencyBodyAccelerationMeanZ" "FrequencyBodyAccelerationMeanFreqX" "FrequencyBodyAccelerationMeanFreqY" "FrequencyBodyAccelerationMeanFreqZ" "FrequencyBodyAccelerationJerkMeanX" "FrequencyBodyAccelerationJerkMeanY" "FrequencyBodyAccelerationJerkMeanZ" "FrequencyBodyAccelerationJerkMeanFreqX" "FrequencyBodyAccelerationJerkMeanFreqY" "FrequencyBodyAccelerationJerkMeanFreqZ" "FrequencyBodyGyroMeanX" "FrequencyBodyGyroMeanY" "FrequencyBodyGyroMeanZ" "FrequencyBodyGyroMeanFreqX" "FrequencyBodyGyroMeanFreqY" "FrequencyBodyGyroMeanFreqZ" "FrequencyBodyAccelerationMagnitudeMean" "FrequencyBodyAccelerationMagnitudeMeanFreq" "FrequencyBodyBodyAccelerationJerkMagnitudeMean" "FrequencyBodyBodyAccelerationJerkMagnitudeMeanFreq" "FrequencyBodyBodyGyroMagnitudeMean" "FrequencyBodyBodyGyroMagnitudeMeanFreq" "FrequencyBodyBodyGyroJerkMagnitudeMean" "FrequencyBodyBodyGyroJerkMagnitudeMeanFreq" "TimeBodyAccelerationStdX" "TimeBodyAccelerationStdY" "TimeBodyAccelerationStdZ" "tGravityAccelerationStdX" "tGravityAccelerationStdY" "tGravityAccelerationStdZ" "TimeBodyAccelerationJerkStdX" "TimeBodyAccelerationJerkStdY" "TimeBodyAccelerationJerkStdZ" "TimeBodyGyroStdX" "TimeBodyGyroStdY" "TimeBodyGyroStdZ" "TimeBodyGyroJerkStdX" "TimeBodyGyroJerkStdY" "TimeBodyGyroJerkStdZ" "TimeBodyAccelerationMagnitudeStd" "tGravityAccelerationMagnitudeStd" "TimeBodyAccelerationJerkMagnitudeStd" "TimeBodyGyroMagnitudeStd" "TimeBodyGyroJerkMagnitudeStd" "FrequencyBodyAccelerationStdX" "FrequencyBodyAccelerationStdY" "FrequencyBodyAccelerationStdZ" "FrequencyBodyAccelerationJerkStdX" "FrequencyBodyAccelerationJerkStdY" "FrequencyBodyAccelerationJerkStdZ" "FrequencyBodyGyroStdX" "FrequencyBodyGyroStdY" "FrequencyBodyGyroStdZ" "FrequencyBodyAccelerationMagnitudeStd" "FrequencyBodyBodyAccelerationJerkMagnitudeStd" "FrequencyBodyBodyGyroMagnitudeStd" "FrequencyBodyBodyGyroJerkMagnitudeStd"
+* Subject
+* Activity
+* TimeBodyAccelerationMeanX/Y/Z
+* tGravityAccelerationMeanX/Y/Z
+* TimeBodyAccelerationJerkMeanX/Y/Z 
+* TimeBodyGyroMeanX/Y/Z
+* TimeBodyGyroJerkMeanX/Y/Z
+* TimeBodyAccelerationMagnitudeMean
+* tGravityAccelerationMagnitudeMean
+* TimeBodyAccelerationJerkMagnitudeMean
+* TimeBodyGyroMagnitudeMean
+* TimeBodyGyroJerkMagnitudeMean
+* FrequencyBodyAccelerationMeanX/Y/Z
+* FrequencyBodyAccelerationMeanFreqX/Y/Z
+* FrequencyBodyAccelerationJerkMeanX/Y/Z
+* FrequencyBodyAccelerationJerkMeanFreqX/Y/Z
+* FrequencyBodyGyroMeanX/Y/Z
+* FrequencyBodyGyroMeanFreqX/Y/Z
+* FrequencyBodyAccelerationMagnitudeMean
+* FrequencyBodyAccelerationMagnitudeMeanFreq
+* FrequencyBodyBodyAccelerationJerkMagnitudeMean
+* FrequencyBodyBodyAccelerationJerkMagnitudeMeanFreq
+* FrequencyBodyBodyGyroMagnitudeMean
+* FrequencyBodyBodyGyroMagnitudeMeanFreq
+* FrequencyBodyBodyGyroJerkMagnitudeMean
+* FrequencyBodyBodyGyroJerkMagnitudeMeanFreq
+* TimeBodyAccelerationStdX/Y/Z
+* tGravityAccelerationStdX/Y/Z
+* TimeBodyAccelerationJerkStdX/Y/Z
+* TimeBodyGyroStdX/Y/Z
+* TimeBodyGyroJerkStdX/Y/Z
+* TimeBodyAccelerationMagnitudeStd
+* tGravityAccelerationMagnitudeStd
+* TimeBodyAccelerationJerkMagnitudeStd
+* TimeBodyGyroMagnitudeStd
+* TimeBodyGyroJerkMagnitudeStd
+* FrequencyBodyAccelerationStdX/Y/Z
+* FrequencyBodyAccelerationJerkStdX/Y/Z
+* FrequencyBodyGyroStdX/Y/Z
+* FrequencyBodyAccelerationMagnitudeStd
+* FrequencyBodyBodyAccelerationJerkMagnitudeStd
+* FrequencyBodyBodyGyroMagnitudeStd 
+* FrequencyBodyBodyGyroJerkMagnitudeStd
 
+More informations are available in the file codebook.md
